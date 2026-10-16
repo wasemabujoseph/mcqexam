@@ -1,7 +1,7 @@
 {
-  "name": "ExamSprint \u2014 Dermatology Practice",
+  "name": "ExamSprint — MCQ Exam Library",
   "short_name": "ExamSprint",
-  "description": "Offline MCQ practice with one-question and full-scroll exam modes.",
+  "description": "Offline-first MCQ practice with TXT/JSON import, Google Drive exam storage, grading, and review.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
