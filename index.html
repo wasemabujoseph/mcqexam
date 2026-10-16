@@ -107,9 +107,9 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.se
   subjectEl.value = readLocal("examsprint-subject", "");
   clientIdEl.value = readLocal("examsprint-google-client-id", "");
 
-  titleEl.addEventListener("input", function(){writeLocal("examsprint-title", titleEl.value); currentDriveFileId=""; updateStatus("Local changes");});
-  subjectEl.addEventListener("input", function(){writeLocal("examsprint-subject", subjectEl.value); currentDriveFileId=""; updateStatus("Local changes");});
-  sourceEl.addEventListener("input", function(){currentDriveFileId=""; updateStatus("Local changes");});
+  titleEl.addEventListener("input", function(){writeLocal("examsprint-title", titleEl.value); updateStatus(currentDriveFileId ? "Unsaved Drive changes" : "Local changes");});
+  subjectEl.addEventListener("input", function(){writeLocal("examsprint-subject", subjectEl.value); updateStatus(currentDriveFileId ? "Unsaved Drive changes" : "Local changes");});
+  sourceEl.addEventListener("input", function(){updateStatus(currentDriveFileId ? "Unsaved Drive changes" : "Local changes");});
 
   function updateStatus(text, online){
     libraryStatus.textContent = text;
@@ -324,6 +324,9 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.se
       if(currentDriveFileId){
         await driveFetch("https://www.googleapis.com/upload/drive/v3/files/"+encodeURIComponent(currentDriveFileId)+"?uploadType=media&fields=id,name,modifiedTime",{
           method:"PATCH",headers:{"Content-Type":"application/json;charset=utf-8"},body:content
+        });
+        await driveFetch("https://www.googleapis.com/drive/v3/files/"+encodeURIComponent(currentDriveFileId)+"?fields=id,name",{
+          method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:filename})
         });
       }else{
         var folder=await ensureFolder();
