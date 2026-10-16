@@ -1,11 +1,53 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ExamSprint — Practice & Review</title>
-<meta name="theme-color" content="#315be8"><meta name="description" content="A private, offline dermatology MCQ practice exam with one-question and full-scroll modes."><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./assets/icon-180.png">
+<meta name="theme-color" content="#315be8"><script src="https://accounts.google.com/gsi/client" async defer></script><meta name="description" content="Offline-first MCQ exam practice with TXT/JSON import, Google Drive storage, one-question mode, full-scroll mode, grading, and review."><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./assets/icon-180.png">
 <style>
 :root{color-scheme:light;--bg:#f4f7fb;--paper:#fff;--ink:#142033;--muted:#627087;--line:#e0e7ef;--blue:#315be8;--blue2:#eaf0ff;--green:#12825f;--greenbg:#e7f7f0;--red:#c33f4b;--redbg:#fff0f0;--amber:#9a6710;--amberbg:#fff5da;--shadow:0 18px 50px #18315312}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}header{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100vw - 1160px)/2));position:sticky;top:0;z-index:3}.brand{display:flex;gap:11px;align-items:center;font-weight:850;letter-spacing:-.03em;font-size:19px}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(140deg,#385feb,#79a0ff);color:white;display:grid;place-items:center;font-size:17px;box-shadow:0 6px 15px #315be830}.tag{font-size:12px;color:var(--muted);font-weight:650}.wrap{max-width:1160px;margin:38px auto;padding:0 20px 60px}.hero{margin-bottom:23px}.eyebrow{color:var(--blue);font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase}.hero h1{font-size:clamp(28px,4vw,40px);line-height:1.12;letter-spacing:-.045em;margin:8px 0}.hero p{color:var(--muted);margin:8px 0;max-width:700px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.setup{padding:24px}.labelrow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.labelrow label{font-weight:800}.hint{color:var(--muted);font-size:12px}.input{width:100%;min-height:280px;resize:vertical;border:1px solid #d5deea;border-radius:13px;padding:15px;color:#25334b;background:#fbfcff;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;outline:none}.input:focus{border-color:#7692f5;box-shadow:0 0 0 3px #315be81a}.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}.field{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}.field input{width:76px;padding:9px;border:1px solid var(--line);border-radius:9px}.btn{border:0;border-radius:10px;padding:11px 16px;background:var(--blue);color:white;font-weight:800;box-shadow:0 5px 12px #315be82b}.btn:hover{filter:brightness(.96);transform:translateY(-1px)}.btn:disabled{opacity:.42;cursor:not-allowed;transform:none}.btn.ghost{background:#fff;color:#35445c;border:1px solid var(--line);box-shadow:none}.btn.soft{background:var(--blue2);color:var(--blue);box-shadow:none}.spacer{flex:1}.format{margin-top:15px;background:#f6f8fc;border-radius:12px;padding:13px 15px;color:#58677e;font-size:12px}.format code{color:#34445e}.notice{margin-top:12px;padding:11px 13px;border-radius:11px;font-size:13px}.notice.warn{color:#7e5711;background:var(--amberbg)}.notice.ok{color:#126348;background:var(--greenbg)}.hidden{display:none!important}.examhead{display:flex;align-items:center;gap:12px;margin-bottom:14px}.examtitle{font-size:17px;font-weight:850}.pill{padding:6px 10px;border-radius:99px;background:#eef2f7;color:#47566e;font-weight:750;font-size:12px}.progress{height:7px;background:#e4eaf2;border-radius:20px;overflow:hidden;margin:12px 0 19px}.progress>i{display:block;height:100%;background:linear-gradient(90deg,#315be8,#7a9bff);border-radius:20px;transition:width .25s}.layout{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:16px;align-items:start}.question{padding:25px}.viewtoggle{display:flex;align-items:center;gap:8px;margin:0 0 14px}.viewtoggle .btn{padding:8px 12px}.full-question{scroll-margin-top:92px;padding:22px 0;border-bottom:1px solid var(--line)}.full-question:first-child{padding-top:3px}.full-question:last-of-type{border-bottom:0}.full-question .stem{font-size:18px}.full-question .options{margin:15px 0}.full-submit{display:flex;justify-content:flex-end;padding-top:20px;margin-top:10px;border-top:1px solid var(--line)}.mode-help{font-size:12px;color:var(--muted);margin-left:auto}@media(max-width:800px){.full-question{scroll-margin-top:70px}.mode-help{display:none}}.qmeta{color:var(--muted);font-size:12px;font-weight:750;margin-bottom:10px}.stem{font-size:20px;line-height:1.45;font-weight:760;letter-spacing:-.02em;white-space:pre-wrap}.options{display:grid;gap:10px;margin:22px 0}.option{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;transition:.15s}.option:hover{border-color:#aabaf7;background:#fbfcff}.option.selected{border-color:#7692f5;background:var(--blue2)}.option.correct{border-color:#79c8aa;background:var(--greenbg)}.option.wrong{border-color:#e8a0a4;background:var(--redbg)}.option input{margin:4px 0 0;accent-color:var(--blue)}.letter{flex:none;width:25px;height:25px;border-radius:8px;background:#eef2f7;display:grid;place-items:center;font-size:12px;font-weight:850;color:#41516a}.option.selected .letter{color:var(--blue);background:#dce5ff}.optiontext{padding-top:1px}.resultbox{border-radius:12px;padding:13px 15px;margin:13px 0;font-weight:700}.resultbox.good{background:var(--greenbg);color:#116549}.resultbox.bad{background:var(--redbg);color:#a22c3b}.explanation{border-left:3px solid #82a0ff;padding:8px 13px;margin-top:10px;color:#53627a;background:#f8faff;border-radius:0 10px 10px 0}.qcontrols{display:flex;gap:9px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:17px;margin-top:18px}.side{padding:17px;position:sticky;top:88px}.side h3{font-size:13px;margin:1px 0 12px}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.jump{height:34px;border:1px solid var(--line);border-radius:9px;background:white;color:#53627a;font-size:12px;font-weight:800}.jump.current{border-color:var(--blue);color:var(--blue);box-shadow:0 0 0 2px #315be81a}.jump.answered{background:var(--blue2);color:var(--blue);border-color:#cbd6ff}.jump.correct{background:var(--greenbg);border-color:#a6dec8;color:var(--green)}.jump.wrong{background:var(--redbg);border-color:#efc2c5;color:var(--red)}.legend{font-size:11px;color:var(--muted);margin-top:13px;display:grid;gap:6px}.legend span{display:flex;align-items:center;gap:7px}.dot{width:9px;height:9px;border-radius:3px;background:#e5eaf2}.dot.blue{background:#b9c9ff}.dot.green{background:#9bd6bf}.dot.red{background:#efb3b7}.timer{font-variant-numeric:tabular-nums;color:#26364e;font-weight:850;background:#f1f4f9;padding:7px 10px;border-radius:9px;min-width:67px;text-align:center}.timer.low{color:var(--red);background:var(--redbg)}.reviewflag{display:flex;gap:7px;align-items:center;color:#596981;font-size:12px;margin-left:auto;cursor:pointer}.reviewflag input{accent-color:var(--amber)}.summary{padding:26px}.scoregrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.stat{padding:14px;border-radius:13px;background:#f4f7fb}.stat strong{display:block;font-size:25px;letter-spacing:-.04em}.stat span{font-size:11px;color:var(--muted);font-weight:700}.reviewlist{display:grid;gap:10px;margin-top:15px}.reviewitem{border:1px solid var(--line);border-radius:12px;padding:13px}.reviewitem summary{cursor:pointer;font-weight:800}.reviewitem .small{font-size:13px;color:#526178;margin-top:10px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);padding:10px 14px;background:#19263c;color:white;border-radius:10px;box-shadow:var(--shadow);z-index:8;font-size:13px}.foot{color:#8792a3;text-align:center;font-size:11px;margin-top:20px}@media(max-width:800px){.layout{grid-template-columns:1fr}.side{position:static;order:-1}.grid{grid-template-columns:repeat(10,1fr)}.question{padding:20px}.wrap{margin:25px auto}.scoregrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){header{height:60px;padding:0 15px}.tag{display:none}.wrap{padding:0 12px 40px}.setup{padding:15px}.input{min-height:230px}.stem{font-size:18px}.question{padding:16px}.grid{grid-template-columns:repeat(8,1fr)}.qcontrols .spacer{display:none}.qcontrols .btn{flex:1}.labelrow{align-items:flex-start;flex-direction:column}.scoregrid{grid-template-columns:repeat(2,1fr)}}
+
+.library{padding:20px;margin-bottom:18px}.libraryTop{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;margin-bottom:16px}.libraryTop h2{margin:0;font-size:18px;letter-spacing:-.025em}.libraryTop p{margin:4px 0 0;color:var(--muted);font-size:12px}.statusChip{padding:7px 10px;border-radius:999px;background:#eef2f7;color:#5a687c;font-size:11px;font-weight:800;white-space:nowrap}.statusChip.on{background:var(--greenbg);color:var(--green)}.libraryGrid{display:grid;grid-template-columns:1.3fr 1fr;gap:12px}.metaField{display:grid;gap:6px}.metaField label{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.06em}.metaInput,.driveSelect{width:100%;border:1px solid #d5deea;border-radius:10px;padding:10px 11px;background:#fbfcff;color:#25334b;outline:none}.metaInput:focus,.driveSelect:focus{border-color:#7692f5;box-shadow:0 0 0 3px #315be81a}.libraryActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.libraryActions .btn{padding:9px 12px}.driveArea{margin-top:15px;padding-top:15px;border-top:1px solid var(--line)}.driveRow{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center}.driveStatus{font-size:12px;color:var(--muted);margin-top:8px;min-height:18px}.driveConfig{margin-top:10px;font-size:12px;color:var(--muted)}.driveConfig summary{cursor:pointer;font-weight:800;color:#51617a}.driveConfig .configBox{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:9px}.dropActive{outline:3px dashed #7692f5;outline-offset:-8px}.miniNote{font-size:11px;color:var(--muted);margin-top:7px}.dangerText{color:var(--red)}@media(max-width:700px){.libraryGrid{grid-template-columns:1fr}.driveRow{grid-template-columns:1fr 1fr}.driveRow .driveSelect{grid-column:1/-1}.libraryTop{flex-direction:column}.statusChip{align-self:flex-start}}
+
 </style></head><body>
-<header><div class="brand"><span class="logo">✓</span> ExamSprint</div><span class="tag">Private · offline · your answers stay on this device</span></header>
+<header><div class="brand"><span class="logo">✓</span> ExamSprint</div><span class="tag">Offline-first · Google Drive sync</span></header>
 <main class="wrap"><section class="hero"><div class="eyebrow">Fast exam practice</div><h1>Paste. Practice. Review.</h1><p>Turn your question text into a timed quiz, check your answers, and review explanations right away.</p></section>
+
+<section id="examLibrary" class="panel library">
+  <div class="libraryTop">
+    <div><h2>Exam Library</h2><p>Import TXT/JSON, keep an offline draft, or sync your exams to your own Google Drive.</p></div>
+    <span id="libraryStatus" class="statusChip">Local draft</span>
+  </div>
+  <div class="libraryGrid">
+    <div class="metaField"><label for="examTitleInput">Exam title</label><input id="examTitleInput" class="metaInput" placeholder="e.g. Dermatology Midterm"></div>
+    <div class="metaField"><label for="subjectInput">Subject</label><input id="subjectInput" class="metaInput" placeholder="e.g. Dermatology"></div>
+  </div>
+  <div class="libraryActions">
+    <button class="btn soft" id="importExamBtn" type="button">↑ Import TXT / JSON</button>
+    <input id="examFileInput" type="file" accept=".txt,.json,text/plain,application/json" hidden>
+    <button class="btn ghost" id="exportJsonBtn" type="button">↓ Export JSON</button>
+    <button class="btn ghost" id="exportTxtBtn" type="button">↓ Export TXT</button>
+    <button class="btn ghost" id="newExamBtn" type="button">＋ New exam</button>
+  </div>
+  <div class="miniNote">You can also drag and drop a .txt or .json exam file anywhere on this card.</div>
+
+  <div class="driveArea">
+    <div class="driveRow">
+      <select id="driveFileSelect" class="driveSelect" aria-label="Google Drive exam library"><option value="">Google Drive library — connect first</option></select>
+      <button class="btn ghost" id="loadDriveBtn" type="button" disabled>Load</button>
+      <button class="btn" id="saveDriveBtn" type="button" disabled>Save to Drive</button>
+    </div>
+    <div class="libraryActions">
+      <button class="btn soft" id="connectDriveBtn" type="button">Connect Google Drive</button>
+      <button class="btn ghost" id="refreshDriveBtn" type="button" disabled>Refresh library</button>
+      <button class="btn ghost" id="disconnectDriveBtn" type="button" disabled>Disconnect</button>
+    </div>
+    <div id="driveStatus" class="driveStatus">Drive is optional. Your current exam still autosaves locally in this browser.</div>
+    <details class="driveConfig">
+      <summary>Google Drive setup / OAuth Client ID</summary>
+      <div class="configBox"><input id="googleClientIdInput" class="metaInput" placeholder="123456789-xxxx.apps.googleusercontent.com"><button class="btn ghost" id="saveClientIdBtn" type="button">Save ID</button></div>
+      <div class="miniNote">Use a Google OAuth Web Client ID with Drive API enabled and add <strong>https://wasemabujoseph.github.io</strong> as an authorized JavaScript origin. The Client ID is not a secret and is stored only in this browser.</div>
+    </details>
+  </div>
+</section>
+
 <section id="setup" class="panel setup"><div class="labelrow"><label for="source">Paste your exam text</label><span class="hint" id="draftState">Your text is saved only in this browser</span></div><textarea id="source" class="input" spellcheck="false" placeholder="Paste questions here…"></textarea><div id="parseNotice" class="notice hidden"></div><div class="row"><label class="field">Timer <input id="minutes" type="number" min="0" max="600" value="0"> min <span class="hint">0 = no timer</span></label><span class="spacer"></span><button class="btn ghost" id="clearBtn">Clear</button><button class="btn" id="startBtn">Parse &amp; start</button></div><div class="format"><strong>Recognized format</strong><br><code>Q1: Question text<br>A) First choice<br>B) Second choice<br>Answer: B<br>Explanation: Why B is correct</code><br>Also accepts numbered questions, <code>Correct answer:</code>, and A–J options. Questions without an answer key are marked ungraded.</div></section>
 <section id="practice" class="hidden"><div class="examhead"><button class="btn ghost" id="backBtn">← Edit text</button><span class="examtitle" id="examName">Practice set</span><span class="spacer"></span><span class="pill" id="answeredPill">0 answered</span><span class="timer hidden" id="timer">00:00</span></div><div class="viewtoggle"><button class="btn soft" id="oneMode" aria-pressed="true">One question</button><button class="btn ghost" id="fullMode" aria-pressed="false">Full questions</button><span class="mode-help">Full questions lets you scroll through the whole exam and submit when ready.</span></div><div class="progress"><i id="progressBar"></i></div><div class="layout"><article class="panel question" id="questionCard"></article><aside class="panel side"><h3>Questions</h3><div id="jumpGrid" class="grid"></div><div class="legend"><span><i class="dot"></i> Not answered</span><span><i class="dot blue"></i> Answered</span><span><i class="dot green"></i> Correct</span><span><i class="dot red"></i> Incorrect</span></div><button class="btn" id="finishBtn" style="width:100%;margin-top:17px">Finish &amp; grade</button></aside></div></section><section id="results" class="panel summary hidden"></section><div class="foot">ExamSprint runs in this file. It does not upload your questions or answers.</div></main><div id="toast" class="toast hidden"></div>
 <script>
@@ -35,4 +77,303 @@ function finish(auto){if(finished)return;const unanswered=questions.filter((q,i)
 function renderResults(){const keyed=questions.map((q,i)=>({q,i})).filter(x=>x.q.keys.length),correct=keyed.filter(x=>isCorrect(x.i)).length,wrong=keyed.length-correct,ungraded=questions.length-keyed.length,pct=keyed.length?Math.round(correct/keyed.length*100):0;results.innerHTML=`<div class="eyebrow">Practice complete</div><h2 style="font-size:30px;letter-spacing:-.04em;margin:6px 0">Your results</h2><p style="color:var(--muted);margin:0">${keyed.length?`${pct}% · ${correct} of ${keyed.length} graded questions correct`:'No answer keys were detected, so the set could not be graded.'}</p><div class="scoregrid"><div class="stat"><strong>${pct}%</strong><span>SCORE</span></div><div class="stat"><strong>${correct}</strong><span>CORRECT</span></div><div class="stat"><strong>${wrong}</strong><span>INCORRECT / BLANK</span></div><div class="stat"><strong>${ungraded}</strong><span>UNGRADED</span></div></div><div class="row"><button class="btn" id="reviewWrong">Review incorrect</button><button class="btn soft" id="retryBtn">Try again</button><button class="btn ghost" id="editBtn">Edit exam text</button><span class="spacer"></span><button class="btn ghost" id="copyBtn">Copy results</button></div><div class="reviewlist" id="reviewList"></div>`;const list=$('#reviewList');list.innerHTML=questions.map((q,i)=>{const status=!q.keys.length?'Ungraded':isCorrect(i)?'Correct':(answers[i]?.length?'Incorrect':'Unanswered');return `<details class="reviewitem" ${status!=='Correct'?'open':''} data-status="${status}"><summary>Q${esc(q.number)} · ${status}${q.keys.length?` · Key: ${q.keys.join(', ')}`:''}</summary><div class="small"><strong>${esc(q.stem)}</strong><br>Your answer: ${answers[i]?.length?esc(answers[i].join(', ')):'—'}${q.keys.length?`<br>Correct answer: ${esc(q.keys.join(', '))}`:''}${q.explanation?`<div class="explanation">${esc(q.explanation)}</div>`:''}</div></details>`}).join('');$('#reviewWrong').onclick=()=>{list.querySelectorAll('details').forEach(d=>d.open=d.dataset.status!=='Correct');list.scrollIntoView({behavior:'smooth'})};$('#retryBtn').onclick=()=>{answers={};checked={};finished=false;index=0;results.classList.add('hidden');practice.classList.remove('hidden');startTimer();render()};$('#editBtn').onclick=()=>{results.classList.add('hidden');setup.classList.remove('hidden')};$('#copyBtn').onclick=async()=>{const text=`ExamSprint results: ${pct}% (${correct}/${keyed.length} graded)\nIncorrect/blank: ${wrong}\nUngraded: ${ungraded}`;try{await navigator.clipboard.writeText(text);toast('Results copied.')}catch{toast(text)}}}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}let toastTimer;function toast(s){const t=$('#toast');t.textContent=s;t.classList.remove('hidden');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.add('hidden'),2500)}
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{}))}
-</script></body></html>
+</script>
+<script>
+(function(){
+  "use strict";
+  var DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.file";
+  var DRIVE_FOLDER = "ExamSprint";
+  var accessToken = "";
+  var tokenClient = null;
+  var driveFolderId = "";
+  var currentDriveFileId = "";
+  var titleEl = document.getElementById("examTitleInput");
+  var subjectEl = document.getElementById("subjectInput");
+  var sourceEl = document.getElementById("source");
+  var fileInput = document.getElementById("examFileInput");
+  var driveSelect = document.getElementById("driveFileSelect");
+  var driveStatus = document.getElementById("driveStatus");
+  var libraryStatus = document.getElementById("libraryStatus");
+  var clientIdEl = document.getElementById("googleClientIdInput");
+  var connectBtn = document.getElementById("connectDriveBtn");
+  var saveDriveBtn = document.getElementById("saveDriveBtn");
+  var loadDriveBtn = document.getElementById("loadDriveBtn");
+  var refreshDriveBtn = document.getElementById("refreshDriveBtn");
+  var disconnectDriveBtn = document.getElementById("disconnectDriveBtn");
+
+  function readLocal(key, fallback){try{return localStorage.getItem(key) || fallback}catch(e){return fallback}}
+  function writeLocal(key, value){try{localStorage.setItem(key, value)}catch(e){}}
+  titleEl.value = readLocal("examsprint-title", "");
+  subjectEl.value = readLocal("examsprint-subject", "");
+  clientIdEl.value = readLocal("examsprint-google-client-id", "");
+
+  titleEl.addEventListener("input", function(){writeLocal("examsprint-title", titleEl.value); currentDriveFileId=""; updateStatus("Local changes");});
+  subjectEl.addEventListener("input", function(){writeLocal("examsprint-subject", subjectEl.value); currentDriveFileId=""; updateStatus("Local changes");});
+  sourceEl.addEventListener("input", function(){currentDriveFileId=""; updateStatus("Local changes");});
+
+  function updateStatus(text, online){
+    libraryStatus.textContent = text;
+    libraryStatus.classList.toggle("on", !!online);
+  }
+  function setDriveStatus(text, isError){
+    driveStatus.textContent = text;
+    driveStatus.classList.toggle("dangerText", !!isError);
+  }
+  function cleanName(value){
+    return (value || "Untitled Exam").replace(/[\\/:*?"<>|]+/g,"-").replace(/\s+/g," ").trim().slice(0,100);
+  }
+  function downloadFile(name, content, type){
+    var blob = new Blob([content], {type:type});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){URL.revokeObjectURL(url)},1000);
+  }
+  function buildPackage(){
+    var parsed = [];
+    try{ if(typeof parseExam === "function") parsed = parseExam(sourceEl.value); }catch(e){}
+    return {
+      format:"ExamSprint",
+      version:2,
+      title:titleEl.value.trim() || "Untitled Exam",
+      subject:subjectEl.value.trim() || "",
+      sourceText:sourceEl.value,
+      questions:parsed,
+      updatedAt:new Date().toISOString()
+    };
+  }
+  function optionsToText(options){
+    var out = [];
+    if(Array.isArray(options)){
+      options.forEach(function(v,i){
+        if(v && typeof v === "object"){
+          var k = String(v.id || v.letter || String.fromCharCode(65+i)).toUpperCase();
+          out.push(k + ") " + String(v.text || v.value || ""));
+        }else out.push(String.fromCharCode(65+i) + ") " + String(v));
+      });
+    } else if(options && typeof options === "object"){
+      Object.keys(options).forEach(function(k){out.push(String(k).toUpperCase() + ") " + String(options[k]));});
+    }
+    return out;
+  }
+  function genericJsonToText(data){
+    if(data && typeof data.sourceText === "string") return data.sourceText;
+    var rows = Array.isArray(data) ? data : (data && Array.isArray(data.questions) ? data.questions : null);
+    if(!rows) throw new Error("JSON must contain sourceText or a questions array.");
+    var blocks = [];
+    rows.forEach(function(q,i){
+      if(typeof q === "string"){blocks.push("Q"+(i+1)+": "+q); return;}
+      var stem = q.stem || q.question || q.text || q.prompt || "";
+      var opts = q.options || q.choices || q.answers || [];
+      var ans = q.answer || q.correctAnswer || q.correct_answer || q.key || q.keys || "";
+      if(Array.isArray(ans)) ans = ans.join(", ");
+      var exp = q.explanation || q.rationale || "";
+      var lines = ["Q"+(i+1)+": "+String(stem)].concat(optionsToText(opts));
+      if(ans !== "") lines.push("Answer: "+String(ans));
+      if(exp) lines.push("Explanation: "+String(exp));
+      blocks.push(lines.join("\n"));
+    });
+    return blocks.join("\n\n");
+  }
+  function applyImported(data, fallbackName){
+    var text = "";
+    if(typeof data === "string") text = data;
+    else {
+      text = genericJsonToText(data);
+      if(data && !Array.isArray(data)){
+        if(data.title) titleEl.value = String(data.title);
+        if(data.subject) subjectEl.value = String(data.subject);
+      }
+    }
+    sourceEl.value = text;
+    sourceEl.dispatchEvent(new Event("input",{bubbles:true}));
+    if(!titleEl.value && fallbackName) titleEl.value = fallbackName.replace(/\.(json|txt)$/i,"");
+    writeLocal("examsprint-title", titleEl.value);
+    writeLocal("examsprint-subject", subjectEl.value);
+    updateStatus("Imported");
+  }
+  async function importFile(file){
+    if(!file) return;
+    try{
+      var raw = await file.text();
+      if(/\.json$/i.test(file.name) || file.type.indexOf("json") !== -1) applyImported(JSON.parse(raw), file.name);
+      else applyImported(raw, file.name);
+      currentDriveFileId = "";
+      setDriveStatus("Imported " + file.name + ". Ready to practice or save.", false);
+    }catch(e){setDriveStatus("Import failed: " + e.message, true);}
+  }
+
+  document.getElementById("importExamBtn").addEventListener("click", function(){fileInput.click()});
+  fileInput.addEventListener("change", function(){importFile(fileInput.files[0]); fileInput.value="";});
+  var card = document.getElementById("examLibrary");
+  ["dragenter","dragover"].forEach(function(evt){card.addEventListener(evt,function(e){e.preventDefault();card.classList.add("dropActive")})});
+  ["dragleave","drop"].forEach(function(evt){card.addEventListener(evt,function(e){e.preventDefault();card.classList.remove("dropActive")})});
+  card.addEventListener("drop",function(e){if(e.dataTransfer.files && e.dataTransfer.files[0]) importFile(e.dataTransfer.files[0])});
+
+  document.getElementById("exportJsonBtn").addEventListener("click", function(){
+    var p = buildPackage();
+    downloadFile(cleanName(p.title)+".examsprint.json", JSON.stringify(p,null,2), "application/json;charset=utf-8");
+  });
+  document.getElementById("exportTxtBtn").addEventListener("click", function(){
+    downloadFile(cleanName(titleEl.value || "Exam")+".txt", sourceEl.value, "text/plain;charset=utf-8");
+  });
+  document.getElementById("newExamBtn").addEventListener("click", function(){
+    if(sourceEl.value.trim() && !confirm("Start a new exam? Your current local draft will be replaced.")) return;
+    titleEl.value=""; subjectEl.value=""; sourceEl.value=""; currentDriveFileId="";
+    writeLocal("examsprint-title",""); writeLocal("examsprint-subject",""); writeLocal("examsprint-draft","");
+    sourceEl.dispatchEvent(new Event("input",{bubbles:true})); updateStatus("New exam");
+  });
+  document.getElementById("saveClientIdBtn").addEventListener("click", function(){
+    var id = clientIdEl.value.trim();
+    if(!id || id.indexOf(".apps.googleusercontent.com") === -1){setDriveStatus("Paste a valid Google OAuth Web Client ID.",true);return;}
+    writeLocal("examsprint-google-client-id",id); tokenClient=null; setDriveStatus("Client ID saved. Click Connect Google Drive.",false);
+  });
+
+  function waitForGoogle(){
+    return new Promise(function(resolve,reject){
+      var tries=0;
+      var t=setInterval(function(){
+        tries++;
+        if(window.google && google.accounts && google.accounts.oauth2){clearInterval(t);resolve();}
+        else if(tries>50){clearInterval(t);reject(new Error("Google sign-in library did not load. Check your connection and reload."));}
+      },100);
+    });
+  }
+  async function ensureToken(interactive){
+    if(accessToken) return accessToken;
+    var clientId = clientIdEl.value.trim() || readLocal("examsprint-google-client-id","");
+    if(!clientId) throw new Error("Add your Google OAuth Client ID under Google Drive setup first.");
+    await waitForGoogle();
+    if(!tokenClient){
+      tokenClient = google.accounts.oauth2.initTokenClient({client_id:clientId,scope:DRIVE_SCOPE,callback:function(){}});
+    }
+    return new Promise(function(resolve,reject){
+      tokenClient.callback=function(resp){
+        if(resp && resp.access_token){
+          accessToken=resp.access_token;
+          connectBtn.textContent="Drive connected";
+          saveDriveBtn.disabled=false; refreshDriveBtn.disabled=false; disconnectDriveBtn.disabled=false;
+          updateStatus("Drive connected",true);
+          resolve(accessToken);
+        }else reject(new Error((resp && resp.error) || "Google authorization failed."));
+      };
+      tokenClient.error_callback=function(){reject(new Error("Google authorization was cancelled or blocked."));};
+      tokenClient.requestAccessToken({prompt:interactive ? "consent" : ""});
+    });
+  }
+  async function driveFetch(url, options){
+    await ensureToken(false);
+    options = options || {};
+    options.headers = Object.assign({}, options.headers || {}, {Authorization:"Bearer "+accessToken});
+    var res = await fetch(url,options);
+    if(res.status===401){
+      accessToken="";
+      await ensureToken(false);
+      options.headers.Authorization="Bearer "+accessToken;
+      res=await fetch(url,options);
+    }
+    if(!res.ok){
+      var msg="Drive API error "+res.status;
+      try{var er=await res.json(); msg=(er.error && er.error.message) || msg;}catch(e){}
+      throw new Error(msg);
+    }
+    if(res.status===204) return null;
+    var ct=res.headers.get("content-type")||"";
+    return ct.indexOf("application/json")!==-1 ? res.json() : res.text();
+  }
+  async function ensureFolder(){
+    if(driveFolderId) return driveFolderId;
+    var q = encodeURIComponent("name='"+DRIVE_FOLDER+"' and mimeType='application/vnd.google-apps.folder' and trashed=false");
+    var data = await driveFetch("https://www.googleapis.com/drive/v3/files?q="+q+"&spaces=drive&fields=files(id,name)&pageSize=20");
+    if(data.files && data.files.length){driveFolderId=data.files[0].id; return driveFolderId;}
+    var created = await driveFetch("https://www.googleapis.com/drive/v3/files?fields=id,name",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({name:DRIVE_FOLDER,mimeType:"application/vnd.google-apps.folder",appProperties:{app:"ExamSprint"}})
+    });
+    driveFolderId=created.id; return driveFolderId;
+  }
+  async function refreshDriveLibrary(){
+    try{
+      setDriveStatus("Loading your ExamSprint Drive library…",false);
+      var folder = await ensureFolder();
+      var q=encodeURIComponent("'"+folder+"' in parents and trashed=false");
+      var data=await driveFetch("https://www.googleapis.com/drive/v3/files?q="+q+"&spaces=drive&orderBy=modifiedTime%20desc&fields=files(id,name,modifiedTime,size)&pageSize=100");
+      driveSelect.innerHTML='<option value="">Choose an exam from Google Drive…</option>';
+      (data.files||[]).forEach(function(f){
+        var o=document.createElement("option"); o.value=f.id; o.textContent=f.name+" · "+new Date(f.modifiedTime).toLocaleString(); driveSelect.appendChild(o);
+      });
+      loadDriveBtn.disabled=!(data.files&&data.files.length);
+      setDriveStatus((data.files||[]).length+" exam file(s) in Drive. Folder: "+DRIVE_FOLDER,false);
+    }catch(e){setDriveStatus(e.message,true);}
+  }
+  async function connectDrive(){
+    try{
+      setDriveStatus("Opening Google authorization…",false);
+      await ensureToken(true);
+      await refreshDriveLibrary();
+    }catch(e){setDriveStatus(e.message,true);}
+  }
+  async function saveToDrive(){
+    try{
+      if(!sourceEl.value.trim()) throw new Error("Paste or import an exam before saving.");
+      setDriveStatus("Saving exam to Google Drive…",false);
+      await ensureToken(false);
+      var pkg=buildPackage();
+      var content=JSON.stringify(pkg,null,2);
+      var filename=cleanName((pkg.subject ? pkg.subject+" - " : "")+pkg.title)+".examsprint.json";
+      if(currentDriveFileId){
+        await driveFetch("https://www.googleapis.com/upload/drive/v3/files/"+encodeURIComponent(currentDriveFileId)+"?uploadType=media&fields=id,name,modifiedTime",{
+          method:"PATCH",headers:{"Content-Type":"application/json;charset=utf-8"},body:content
+        });
+      }else{
+        var folder=await ensureFolder();
+        var boundary="examsprint_"+Date.now();
+        var metadata={name:filename,mimeType:"application/json",parents:[folder],appProperties:{app:"ExamSprint",version:"2"}};
+        var body="--"+boundary+"\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n"+JSON.stringify(metadata)+"\r\n--"+boundary+"\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n"+content+"\r\n--"+boundary+"--";
+        var created=await driveFetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,modifiedTime",{
+          method:"POST",headers:{"Content-Type":"multipart/related; boundary="+boundary},body:body
+        });
+        currentDriveFileId=created.id;
+      }
+      updateStatus("Saved to Drive",true);
+      setDriveStatus("Saved successfully to Google Drive.",false);
+      await refreshDriveLibrary();
+      driveSelect.value=currentDriveFileId;
+    }catch(e){setDriveStatus("Save failed: "+e.message,true);}
+  }
+  async function loadFromDrive(){
+    var id=driveSelect.value;
+    if(!id){setDriveStatus("Choose an exam from the Drive library first.",true);return;}
+    try{
+      setDriveStatus("Loading exam from Google Drive…",false);
+      var raw=await driveFetch("https://www.googleapis.com/drive/v3/files/"+encodeURIComponent(id)+"?alt=media");
+      var data=typeof raw==="string" ? JSON.parse(raw) : raw;
+      applyImported(data,"");
+      currentDriveFileId=id;
+      updateStatus("Loaded from Drive",true);
+      setDriveStatus("Exam loaded. Edits stay local until you click Save to Drive.",false);
+    }catch(e){setDriveStatus("Load failed: "+e.message,true);}
+  }
+  function disconnectDrive(){
+    if(accessToken && window.google && google.accounts && google.accounts.oauth2){
+      try{google.accounts.oauth2.revoke(accessToken,function(){})}catch(e){}
+    }
+    accessToken=""; tokenClient=null; driveFolderId=""; currentDriveFileId="";
+    saveDriveBtn.disabled=true; refreshDriveBtn.disabled=true; disconnectDriveBtn.disabled=true; loadDriveBtn.disabled=true;
+    driveSelect.innerHTML='<option value="">Google Drive library — connect first</option>';
+    connectBtn.textContent="Connect Google Drive"; updateStatus("Local draft",false);
+    setDriveStatus("Disconnected from Google Drive. Local draft remains on this device.",false);
+  }
+
+  connectBtn.addEventListener("click",connectDrive);
+  saveDriveBtn.addEventListener("click",saveToDrive);
+  loadDriveBtn.addEventListener("click",loadFromDrive);
+  refreshDriveBtn.addEventListener("click",refreshDriveLibrary);
+  disconnectDriveBtn.addEventListener("click",disconnectDrive);
+  driveSelect.addEventListener("change",function(){loadDriveBtn.disabled=!driveSelect.value;});
+
+  window.ExamSprintDrive = {connect:connectDrive,save:saveToDrive,refresh:refreshDriveLibrary};
+})();
+</script>
+
+</body></html>
