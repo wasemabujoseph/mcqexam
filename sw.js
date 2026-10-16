@@ -1,4 +1,4 @@
-const CACHE_NAME = 'examsprint-v2';
+const CACHE_NAME = 'examsprint-v3-drive';
 const APP_FILES = ['./', './index.html', './manifest.webmanifest', './assets/icon.svg', './assets/icon-180.png', './assets/icon-192.png', './assets/icon-512.png'];
 
 self.addEventListener('install', event => {
